@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="750.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kursinis.prif4kursinis.fxControllers.userWindowControllers.UserCartWindowController">
+    <children>
+        <!-- Cart Title -->
+        <Label layoutX="50.0" layoutY="30.0" style="-fx-font-size: 24; -fx-font-weight: bold;" text="Your Cart" />
+
+        <!-- Cart Items List -->
+        <ListView fx:id="cartItemsListView" layoutX="50.0" layoutY="70.0" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #444444; -fx-border-color: #555555; -fx-border-radius: 5;">
+
+        </ListView>
+
+        <!-- Checkout Button -->
+        <Button fx:id="checkoutButton" layoutX="650.0" layoutY="600.0" onAction="#checkoutButton" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" text="Checkout" />
+
+        <!-- Remove Item Button -->
+        <Button fx:id="removeItemButton" layoutX="500.0" layoutY="600.0" onAction="#onRemoveItem" style="-fx-background-color: #E53935; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" text="Remove Item" />
+
+        <!-- Total Price Label -->
+        <Label fx:id="totalPriceLabel" layoutX="50.0" layoutY="600.0" style="-fx-font-size: 20; -fx-font-weight: bold;" text="Total: $" />
+    </children>
+</AnchorPane>

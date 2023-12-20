@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+
+<AnchorPane onMouseClicked="#openOrderWindow" prefHeight="200.0" prefWidth="350.0" style="-fx-background-color: #333333; -fx-background-radius: 10; -fx-border-color: #555555; -fx-border-radius: 10;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kursinis.prif4kursinis.fxControllers.windowControllers.OrderTabsController">
+   <children>
+      <Label fx:id="orderNumberLabel" layoutX="14.0" layoutY="14.0" style="-fx-font-weight: bold; -fx-font-size: 16;" text="Order Nr: 1" textFill="WHITE" />
+      <Label fx:id="orderTotalPriceLabel" layoutX="14.0" layoutY="44.0" style="-fx-font-size: 14;" text="Total: $35" textFill="WHITE" />
+      <Label fx:id="dateCreatedLabel" layoutX="14.0" layoutY="74.0" style="-fx-font-size: 14;" text="Date: 2023-05-15" textFill="WHITE" />
+      <Label fx:id="acceptedByManagerLabel" layoutX="14.0" layoutY="104.0" style="-fx-font-size: 14;" text="Accepted by: John Doe" textFill="WHITE" />
+      <Label fx:id="orderStatusLabel" layoutX="14.0" layoutY="134.0" style="-fx-font-size: 14;" text="Status: Pending" textFill="WHITE" />
+
+      <Button fx:id="openButton" layoutX="14.0" layoutY="164.0" mnemonicParsing="false" onAction="#handleOpenActionButton" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-background-radius: 5;" text="Open" />
+      <Button fx:id="closeButton" layoutX="15.0" layoutY="164.0" mnemonicParsing="false" onAction="#handleCloseActionButton" style="-fx-background-color: #FFC107; -fx-text-fill: white; -fx-background-radius: 5;" text="Close" visible="false" />
+      <Button fx:id="cancelButton" layoutX="73.0" layoutY="164.0" mnemonicParsing="false" onAction="#handleCancelActionButton" style="-fx-background-color: #F44336; -fx-text-fill: white; -fx-background-radius: 5;" text="Cancel" />
+      <SVGPath fx:id="attentionRequiredStar" content="M0,0.054V20h21V0.054H0z M15.422,18.129l-5.264-2.768l-5.265,2.768l1.006-5.863L1.64,8.114l5.887-0.855l2.632-5.334l2.633,5.334l5.885,0.855l-4.258,4.152L15.422,18.129z" fill="WHITE" layoutX="112.0" layoutY="16.0" visible="false" />   </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</AnchorPane>

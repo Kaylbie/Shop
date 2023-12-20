@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="800.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kursinis.prif4kursinis.fxControllers.windowControllers.DisplayOrderWindowController">
+    <children>
+        <!-- Order Information -->
+        <VBox layoutX="30.0" layoutY="20.0" spacing="10">
+            <Label fx:id="orderStatusLabel" style="-fx-font-size: 16; -fx-font-weight: bold;" text="Status: Pending" />
+            <Label fx:id="orderTotalPriceLabel" style="-fx-font-size: 14;" text="Total Price: $xxx.xx" />
+            <Label fx:id="orderManagerLabel" style="-fx-font-size: 14;" text="Manager: John Doe" />
+            <Label fx:id="orderTotalQuantityLabel" style="-fx-font-size: 14;" text="Total Quantity: xx" />
+        </VBox>
+
+        <!-- Customer Information -->
+        <VBox layoutX="30.0" layoutY="207.0" spacing="10">
+            <Label fx:id="customerNameLabel" style="-fx-font-size: 14;" text="Customer: Jane Doe" />
+            <Label fx:id="customerAddressLabel" style="-fx-font-size: 14;" text="Address: 123 Main St" />
+            <Label fx:id="customerCardNoLabel" style="-fx-font-size: 14;" text="Card No: xxxx-xxxx-xxxx-1234" />
+        </VBox>
+
+        <!-- Cart Contents List -->
+        <ListView fx:id="cartContentsListView" layoutX="30.0" layoutY="309.0" prefHeight="200.0" prefWidth="840.0" />
+
+        <!-- Messaging Interface -->
+        <Label layoutX="30.0" layoutY="531.0" text="Messages" />
+        <ListView fx:id="messageListView" layoutX="30.0" layoutY="551.0" prefHeight="200.0" prefWidth="840.0" />
+        <HBox layoutX="30.0" layoutY="761.0" spacing="10">
+            <TextField fx:id="messageTextField" prefWidth="700.0" promptText="Type your message here" />
+            <Button fx:id="sendMessageButton" onAction="#sendMessage" text="Send" />
+        </HBox>
+    </children>
+
+
+
+</AnchorPane>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="750.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kursinis.prif4kursinis.fxControllers.userWindowControllers.UserOrdersWindowController">
+    <children>
+        <Label layoutX="427.0" layoutY="40.0" text="Filter by Status:" />
+        <ComboBox fx:id="statusFilterComboBox" layoutX="527.0" layoutY="35.0" prefWidth="200.0">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Pending" />
+                    <String fx:value="Open" />
+                    <String fx:value="Closed" />
+                    <String fx:value="Cancelled" />
+                </FXCollections>
+            </items>
+        </ComboBox>
+        <Button fx:id="filterButton" layoutX="747.0" layoutY="35.0" onAction="#onFilter" text="Filter" />
+
+
+        <!-- Orders Title -->
+        <Label layoutX="50.0" layoutY="30.0" style="-fx-font-size: 24; -fx-font-weight: bold;" text="Your Orders" />
+
+        <!-- Orders Table -->
+        <TableView fx:id="ordersTableView"  layoutX="50.0" layoutY="70.0" prefHeight="600.0" prefWidth="800.0">
+            <columns>
+                <TableColumn fx:id="idColumn" minWidth="50.0" text="Id" />
+                <!-- Total Price Column -->
+                <TableColumn fx:id="totalPriceColumn" minWidth="200.0" text="Total Price" />
+                <!-- Quantity Column -->
+                <TableColumn fx:id="quantityColumn" minWidth="100.0" text="Quantity" />
+                <!-- Manager Name Column -->
+                <TableColumn fx:id="managerNameColumn" minWidth="200.0" text="Manager Name" />
+                <!-- Status Column -->
+                <TableColumn fx:id="statusColumn" minWidth="100.0" text="Status" />
+
+                <TableColumn fx:id="cancelOrder" prefWidth="150.0" text="Cancel" />
+            </columns>
+        </TableView>
+      <Button fx:id="resetButton" layoutX="805.0" layoutY="35.0" onAction="#onReset" text="Reset" />
+    </children>
+    <padding>
+        <Insets bottom="20" left="20" right="20" top="20" />
+    </padding>
+</AnchorPane>

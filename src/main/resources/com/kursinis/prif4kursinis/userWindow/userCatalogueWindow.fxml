@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Font?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.kursinis.prif4kursinis.fxControllers.userWindowControllers.UserCatalogueWindowController"
+            prefHeight="750.0" prefWidth="900.0">
+    <children>
+        <ScrollPane fx:id="productsScrollPane" hbarPolicy="NEVER" layoutX="35.0" layoutY="274.0" prefHeight="440.0" prefWidth="838.0" styleClass="scrollPane">
+            <content>
+                <VBox fx:id="productsVBox" prefHeight="438.0" prefWidth="827.0" spacing="10.0" style="-fx-border-color: transparent;" />
+            </content>
+        </ScrollPane>
+        <Pane layoutX="35.0" layoutY="29.0" prefHeight="122.0" prefWidth="838.0" />
+        <Label layoutX="401.0" layoutY="27.0" text="PRODUCTS">
+            <font>
+                <Font name="System Bold" size="25.0" />
+            </font>
+        </Label>
+        <Label layoutX="789.0" layoutY="163.0" onMouseClicked="#updateProductTabs" text="Update">
+            <font>
+                <Font size="21.0" />
+            </font>
+        </Label>
+    </children>
+</AnchorPane>

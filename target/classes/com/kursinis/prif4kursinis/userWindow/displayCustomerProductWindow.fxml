@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="750.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kursinis.prif4kursinis.fxControllers.userWindowControllers.DisplayCustomerProductWindowController">
+    <children>
+        <!-- Image View for Product Picture -->
+        <ImageView fx:id="productImageView" fitHeight="287.0" fitWidth="314.0" layoutX="572.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+
+        <!-- Product Information -->
+        <VBox layoutX="130.0" layoutY="10.0" spacing="5" />
+
+        <!-- Action Buttons -->
+        <HBox layoutX="130.0" layoutY="100.0" spacing="10">
+            <padding>
+                <Insets bottom="5.0" />
+            </padding>
+        </HBox>
+         <Label fx:id="productNameLabel" layoutX="20.0" layoutY="14.0" style="-fx-font-weight: bold; -fx-font-size: 16;" text="Product name" />
+         <Label fx:id="productCodeLabel" layoutX="20.0" layoutY="63.0" style="-fx-font-size: 14;" text="Product code" />
+      <Label fx:id="productCodeLabel1" layoutX="20.0" layoutY="128.0" style="-fx-font-size: 14;" text="Product code" />
+         <Label fx:id="productPriceLabel" layoutX="20.0" layoutY="95.0" style="-fx-font-size: 14;" text="Price: $xx.xx" />
+         <Button fx:id="addToCartButton" layoutX="18.0" layoutY="191.0" onAction="#addToCart" style="-fx-font-size: 14; -fx-background-color: transparent;" text="Add to cart" />
+        <TreeView fx:id="commentTreeView" layoutX="439.0" layoutY="397.0" onMouseClicked="#selectedComment" prefHeight="253.0" prefWidth="330.0" />
+        <Button layoutX="20.0" layoutY="665.0" mnemonicParsing="false" onAction="#createComment" text="Add comment" />
+        <Button fx:id="updateButton" layoutX="149.0" layoutY="665.0" mnemonicParsing="false" onAction="#updateComment" text="Update" visible="false" />
+        <Button fx:id="deleteButton" layoutX="282.0" layoutY="665.0" mnemonicParsing="false" onAction="#deleteComment" text="Delete" visible="false" />
+      <TextArea fx:id="commentBodyField" layoutX="19.0" layoutY="495.0" prefHeight="155.0" prefWidth="314.0" promptText="Body" />
+      <TextField fx:id="commentTitleField" layoutX="19.0" layoutY="458.0" prefHeight="25.0" prefWidth="314.0" promptText="Title" />
+      <Slider fx:id="ratingSlider" blockIncrement="1.0" layoutX="20.0" layoutY="281.0" majorTickUnit="1.0" max="5.0" min="1.0" minorTickCount="0" prefHeight="14.0" prefWidth="106.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" />
+      <Label layoutX="23.0" layoutY="254.0" text="Leave a review" />
+      <Label fx:id="ratingLabel" layoutX="20.0" layoutY="158.0" style="-fx-font-size: 14;" text="Rating: 0" />
+      <Button fx:id="saveRatingButton" layoutX="50.0" layoutY="319.0" onAction="#saveRating" style="-fx-font-size: 14; -fx-background-color: transparent;" text="Save" />
+      <Label layoutX="19.0" layoutY="429.0" text="Leave a comment" />
+      <Label layoutX="439.0" layoutY="367.0" text="Comments" />
+    </children>
+</AnchorPane>

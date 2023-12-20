@@ -1,0 +1,15 @@
+.dashBtn {
+    -fx-background-color: #333333;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-alignment: baseline-left;
+
+}
+.dashBtn:hover {
+    -fx-background-color: #595959;
+
+}
+
+.scrollPane {
+    -fx-background-color:transparent;
+}
