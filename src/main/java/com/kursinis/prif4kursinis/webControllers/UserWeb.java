@@ -24,7 +24,6 @@ public class UserWeb {
     EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("coursework-shop");
     CustomHib customHib = new CustomHib(entityManagerFactory);
 
-    //Useris pagal id, GET su PathVariable
     @RequestMapping(value = "/getUserById/{id}", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
@@ -44,17 +43,7 @@ public class UserWeb {
 
         return user != null ? gson.toJson(user) : "";
 
-
-        //return customHib.getEntityById(User.class, id).toString();
     }
-
-    //Useris pagal login ir psw su RequestParam (labai blogai, bet tik kaip pvz bus)
-//    @RequestMapping(value = "getUserByCredentials", method = RequestMethod.GET)
-//    @ResponseStatus(HttpStatus.OK)
-//    @ResponseBody
-//    public String getUserByCredentials(@RequestParam(name = "login") String login, @RequestParam(name = "psw") String password){
-//        return customHib.getUserByCredentials(login, password) == null ? "No such user" : customHib.getUserByCredentials(login, password).toString();
-//    }
 
     @RequestMapping(value = "/user/getUserByCredentials", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.OK)

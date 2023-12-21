@@ -63,13 +63,13 @@ public class UserOrdersWindowController implements Initializable {
         managerNameColumn.setCellValueFactory(new PropertyValueFactory<>("managerName"));
         statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
         ordersTableView.setOnMouseClicked(event -> {
-            if (event.getClickCount() == 2) { // Detect double-click
+            if (event.getClickCount() == 2) {
                 openOrderDetailsWindow();
             }
         });
     }
     private void loadOrders() {
-        List<Cart> orders = customHib.findCartsByUserIdAndStatuses(currentUser.getId(), statuses); // Implement this method in CustomHib
+        List<Cart> orders = customHib.findCartsByUserIdAndStatuses(currentUser.getId(), statuses);
         ObservableList<OrderViewModel> orderViewModels = FXCollections.observableArrayList();
 
         for (Cart cart : orders) {
@@ -93,14 +93,14 @@ public class UserOrdersWindowController implements Initializable {
             {
                 cancelBtn.setOnAction(event -> {
                     OrderViewModel orderViewModel = getTableView().getItems().get(getIndex());
-                    Cart cart = customHib.findCartById(orderViewModel.getId()); // Assuming OrderViewModel has a getCartId method
-
-                    if (cart != null) {
+                    Cart cart = customHib.findCartById(orderViewModel.getId());
+                    if (cart != null && cart.getStatus().equals("Pending")) {
                         cart.setStatus("Cancelled");
                         customHib.update(cart);
                         showAlert("Order Cancelled", "Order has been cancelled.");
                         loadOrders();
                     }
+
                 });
             }
 

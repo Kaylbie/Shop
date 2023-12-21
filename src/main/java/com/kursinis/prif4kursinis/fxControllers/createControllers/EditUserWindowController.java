@@ -19,6 +19,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -51,7 +52,7 @@ public class EditUserWindowController implements Initializable {
         this.editableUser = entityManager.find(User.class, user.getId());
         if (editableUser != null) {
             usernameField.setText(editableUser.getLogin());
-            passwordField.setText(editableUser.getPassword());
+            passwordField.setText("");
             nameField.setText(editableUser.getName());
             surnameField.setText(editableUser.getSurname());
             if (user instanceof Customer) {
@@ -88,7 +89,7 @@ public class EditUserWindowController implements Initializable {
                 newUser = new Manager();
             }
             newUser.setLogin(usernameField.getText());
-            newUser.setPassword(passwordField.getText());
+            newUser.setPassword(BCrypt.hashpw(passwordField.getText(), BCrypt.gensalt()));
             newUser.setName(nameField.getText());
             newUser.setSurname(surnameField.getText());
             if(editableUser instanceof Manager) {

@@ -207,6 +207,7 @@ public class MainWindowController implements Initializable {
     }
     private void loadCustomerWindows(){
         userWindowButtons.setVisible(true);
+        loadCustomerCart(null);
     }
     private void loadManagerWindows(){
         loadDashboardPane();

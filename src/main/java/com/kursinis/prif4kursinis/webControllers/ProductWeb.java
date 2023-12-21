@@ -6,6 +6,7 @@ import com.kursinis.prif4kursinis.hibernateControllers.CustomHib;
 import com.kursinis.prif4kursinis.model.Manager;
 import com.kursinis.prif4kursinis.model.Product;
 import com.kursinis.prif4kursinis.model.User;
+import com.kursinis.prif4kursinis.webControllers.DTO.ProductDTO;
 import com.kursinis.prif4kursinis.webControllers.serializers.LocalDateGsonSerializer;
 import com.kursinis.prif4kursinis.webControllers.serializers.ManagerGsonSerializer;
 import com.kursinis.prif4kursinis.webControllers.serializers.ProductGsonSerializer;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class ProductWeb {
@@ -24,20 +26,26 @@ public class ProductWeb {
     EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("coursework-shop");
     CustomHib customHib = new CustomHib(entityManagerFactory);
 
-    //Useris pagal id, GET su PathVariable
     @RequestMapping(value = "/product/getAllProducts", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     public String getAllProducts(){
-
-        GsonBuilder builder = new GsonBuilder();
-        builder.registerTypeAdapter(LocalDate.class, new LocalDateGsonSerializer());
-        builder.registerTypeAdapter(Product.class, new ProductGsonSerializer());
-        Gson gson = builder.create();
+        Gson gson = new Gson();
 
         List<Product> productList = customHib.getAllRecords(Product.class);
+        List<ProductDTO> productDTOList = productList.stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
 
-        return gson.toJson(productList);
+        return gson.toJson(productDTOList);
+    }
 
+    private ProductDTO convertToDTO(Product product) {
+        ProductDTO dto = new ProductDTO();
+        dto.setId(product.getId());
+        dto.setName(product.getTitle());
+        dto.setPrice(product.getPrice());
+        // Set other properties
+        return dto;
     }
 }

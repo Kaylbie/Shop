@@ -18,6 +18,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.io.IOException;
 import java.net.URL;
@@ -46,7 +47,6 @@ public class LoginController implements Initializable {
     }
 
     public void validateAndConnect() throws IOException {
-        userHib = new UserHib(entityManagerFactory);
         User user = userHib.getUserByCredentials(loginField.getText(), passwordField.getText()); //get from text fields
 
         if (user != null) {
@@ -67,9 +67,17 @@ public class LoginController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         entityManagerFactory = StartGui.getEntityManagerFactory();
+        userHib = new UserHib(entityManagerFactory);
+
     }
 
     public void handleForgotPassword(ActionEvent actionEvent) {
-
+        if(loginField.getText().isEmpty() && passwordField.getText().isEmpty()){
+            JavaFxCustomUtils.generateAlert(Alert.AlertType.INFORMATION, "Forgot password INFO", "Wrong data", "Please enter login");
+            return;
+        }
+        User user = userHib.getUserByLogin(loginField.getText());
+        user.setPassword(BCrypt.hashpw(passwordField.getText(), BCrypt.gensalt()));
+        userHib.updateUser(user);
     }
 }

@@ -8,6 +8,7 @@ module com.kursinis.prif4kursinis {
     requires spring.context;
     requires com.google.gson;
     requires spring.web;
+    requires jbcrypt;
 
     opens com.kursinis.prif4kursinis to javafx.fxml;
     exports com.kursinis.prif4kursinis;

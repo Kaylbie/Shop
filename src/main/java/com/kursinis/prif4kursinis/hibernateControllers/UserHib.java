@@ -3,13 +3,11 @@ package com.kursinis.prif4kursinis.hibernateControllers;
 import com.kursinis.prif4kursinis.model.Customer;
 import com.kursinis.prif4kursinis.model.Manager;
 import com.kursinis.prif4kursinis.model.User;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.NoResultException;
-import jakarta.persistence.Query;
+import jakarta.persistence.*;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -120,15 +118,33 @@ public class UserHib {
             CriteriaBuilder cb = em.getCriteriaBuilder();
             CriteriaQuery<User> query = cb.createQuery(User.class);
             Root<User> root = query.from(User.class);
-            query.select(root).where(cb.and(cb.like(root.get("login"), login), cb.like(root.get("password"), password)));
-            Query q;
+            query.select(root).where(cb.equal(root.get("login"), login));
+            Query q = em.createQuery(query);
 
-            q = em.createQuery(query);
-            return (User) q.getSingleResult();
+            User user = (User) q.getSingleResult();
+            if (user != null && BCrypt.checkpw(password, user.getPassword())) {
+                return user;
+            }
+            return null;
         } catch (NoResultException e) {
             return null;
         } finally {
             if (em != null) em.close();
+        }
+    }
+    public User getUserByLogin(String login) {
+        EntityManager em = null;
+        try {
+            em = entityManagerFactory.createEntityManager();
+            TypedQuery<User> query = em.createQuery("SELECT u FROM User u WHERE u.login = :login", User.class);
+            query.setParameter("login", login);
+            return query.getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        } finally {
+            if (em != null) {
+                em.close();
+            }
         }
     }
 
